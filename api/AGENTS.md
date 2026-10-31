@@ -19,8 +19,9 @@ query shapes, or persistence contracts:
    authenticated 100-client load. Retain raw reports and explain dataset,
    hardware, exclusions and any changed latency. Unexpected errors must be
    zero; overall/save p95 must meet the declared regression budget.
-6. Regenerate README's Manim evidence from the successful report when its
-   displayed numbers change. Never fabricate or silently relabel a benchmark.
+6. Regenerate the supporting documentation's Manim evidence from the successful
+   report when its displayed numbers change. Never fabricate or silently
+   relabel a benchmark.
 
 The local Windows gate is `./scripts/verify_database.ps1`. Use an idle local
 test stack for migration fingerprint comparisons. CI runs migration, full
