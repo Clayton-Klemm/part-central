@@ -56,6 +56,12 @@ jobs:
           cache: pip
           cache-dependency-path: api/requirements.txt
       - run: pip install -r api/requirements.txt
+      - name: Build the unprivileged API image
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p docs/ci-evidence
+          docker build --file api/Dockerfile --tag part-central-api:ci . 2>&1 | tee docs/ci-evidence/api-image-build.txt
       - name: Verify PostgreSQL migration and seed
         working-directory: api
         env:
@@ -118,11 +124,24 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p docs/ci-evidence
-          cd api
-          python -m alembic check
-          python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 4 > /tmp/part-central-api.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" || true' EXIT
+          api_container="part-central-ci-api-${{ github.run_id }}-${{ github.run_attempt }}"
+          asset_volume="part-central-ci-assets-${{ github.run_id }}-${{ github.run_attempt }}"
+          collect_diagnostics() {
+            result=$?
+            docker logs "$api_container" > docs/ci-evidence/api-runtime.txt 2>&1 || true
+            docker inspect --format '{{json .State}}' "$api_container" > docs/ci-evidence/api-container-state.json 2>&1 || true
+            docker rm --force "$api_container" > /dev/null 2>&1 || true
+            docker volume rm "$asset_volume" > /dev/null 2>&1 || true
+            exit "$result"
+          }
+          trap collect_diagnostics EXIT
+          # Use the production image's USER and initialized asset-volume ownership.
+          # Host networking reaches the isolated PostgreSQL service published above.
+          docker run --detach --name "$api_container" --network host \
+            --mount "type=volume,source=$asset_volume,target=/srv/assets" \
+            --env DATABASE_URL --env API_WORKERS --env DB_POOL_SIZE --env DB_MAX_OVERFLOW --env ADMIN_TOKEN \
+            --env ASSET_STORAGE_DIR=/srv/assets \
+            part-central-api:ci
           python - <<'PYWAIT'
           import httpx, time
           for attempt in range(60):
@@ -135,12 +154,10 @@ jobs:
           else:
               raise SystemExit('API readiness failed')
           PYWAIT
-          python tests/postgres_smoke.py
-          python tests/shift_smoke.py
-          python tests/reference_smoke.py
-          python tests/catalog_smoke.py
-          python tests/native_sketch_smoke.py
-          cd ..
+          docker exec "$api_container" python -m alembic check 2>&1 | tee docs/ci-evidence/alembic-check.txt
+          for smoke in postgres_smoke shift_smoke reference_smoke catalog_smoke native_sketch_smoke; do
+            docker exec "$api_container" python "tests/$smoke.py" 2>&1 | tee "docs/ci-evidence/$smoke.txt"
+          done
           python scripts/database_audit.py > docs/ci-evidence/database-before.json
           python scripts/load_test.py --base-url http://127.0.0.1:8000 --users 100 --iterations 3 --max-p95-ms 1000 --output docs/ci-evidence/load-test.json
           python scripts/database_audit.py > docs/ci-evidence/database-after.json
