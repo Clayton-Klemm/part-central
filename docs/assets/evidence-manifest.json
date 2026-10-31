@@ -1,0 +1,23 @@
+{
+  "renderer": "Manim Community 0.22.0 + FFmpeg palette conversion",
+  "resolution": [
+    960,
+    540
+  ],
+  "fps": 12,
+  "sourceSha256": {
+    "scripts/render_evidence.py": "00a7bd9c35f800897a987aabf64b75e4ba07902edb0021e39ab97d7077f8904a",
+    "scripts/build_evidence.py": "b5b5e9094ebaf4e864e32c0286b5ccc8baa0db6fae7ce4b6d751f2ba288d6782",
+    "docs/load-test-shifts-results.json": "ab53da7382bc522490f04136617d56e001b20aae5d9ca6b44c4fe1d85a18a48a"
+  },
+  "outputs": {
+    "normalization-proof.gif": {
+      "sha256": "e69f49c55e1ca620b1b723a2c788a60e2740376898f0e88447ca6d14a503cf9c",
+      "bytes": 674888
+    },
+    "latency-report.gif": {
+      "sha256": "b081c69fe336a681716b8819e90ea2f1ad25553572f0a3b9d5486406b7e5c3dc",
+      "bytes": 345569
+    }
+  }
+}

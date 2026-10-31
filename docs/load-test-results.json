@@ -1,0 +1,146 @@
+{
+  "startedAt": "2026-10-26T17:16:58.641005+00:00",
+  "target": "http://127.0.0.1:8080",
+  "scenario": "Synchronized burst: catalog + part + start job sheet + all nominal readings with expectedSequence + guarded completion + job summary search + archive read",
+  "users": 100,
+  "iterationsPerUser": 1,
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 100,
+  "completedSheets": 100,
+  "jobPrefix": "LOAD-20261026T171658-1424DE",
+  "elapsedSeconds": 2.017,
+  "requestsPerSecond": 694.07,
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing and network time. Client creation and readiness checks are excluded."
+  ],
+  "overall": {
+    "requests": 1400,
+    "errors": 0,
+    "statuses": {
+      "200": 500,
+      "201": 900
+    },
+    "p50_ms": 108.67,
+    "p95_ms": 244.11,
+    "p99_ms": 309.0,
+    "max_ms": 473.7
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 45.96,
+      "p95_ms": 102.69,
+      "p99_ms": 108.88,
+      "max_ms": 123.3
+    },
+    "GET catalog": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 129.94,
+      "p95_ms": 204.33,
+      "p99_ms": 244.65,
+      "max_ms": 303.4
+    },
+    "GET job history summaries": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 86.42,
+      "p95_ms": 135.59,
+      "p99_ms": 167.72,
+      "max_ms": 178.35
+    },
+    "GET part requirements": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 141.27,
+      "p95_ms": 235.18,
+      "p99_ms": 321.82,
+      "max_ms": 386.08
+    },
+    "POST complete sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 78.67,
+      "p95_ms": 135.02,
+      "p99_ms": 158.29,
+      "max_ms": 168.28
+    },
+    "POST measurement": {
+      "requests": 800,
+      "errors": 0,
+      "statuses": {
+        "201": 800
+      },
+      "p50_ms": 115.17,
+      "p95_ms": 198.89,
+      "p99_ms": 258.5,
+      "max_ms": 303.71
+    },
+    "POST start sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "201": 100
+      },
+      "p50_ms": 256.94,
+      "p95_ms": 320.87,
+      "p99_ms": 452.35,
+      "max_ms": 473.7
+    }
+  },
+  "failures": [],
+  "workstationFailures": [],
+  "serverHost": {
+    "dockerVersion": "29.8.2",
+    "operatingSystem": "Docker Desktop",
+    "architecture": "x86_64",
+    "logicalCpus": 32,
+    "memoryBytes": 20967440384,
+    "samePhysicalHostAsClient": true
+  },
+  "serverSettings": {
+    "apiWorkers": 4,
+    "poolSizePerWorker": 5,
+    "maxOverflowPerWorker": 5,
+    "poolTimeoutSeconds": 10,
+    "maximumApiDatabaseConnections": 40,
+    "postgresMaximumConnections": 100
+  },
+  "dataset": {
+    "parts": 4,
+    "jobsBefore": 202,
+    "runsBefore": 202,
+    "measurementEventsBefore": 1618,
+    "jobsAfter": 302,
+    "runsAfter": 302,
+    "measurementEventsAfter": 2418
+  },
+  "concurrencyProtection": "Every save supplied expectedSequence 0..7 and completion supplied expectedSequence 8, matching the current browser workflow.",
+  "addressDiagnostic": "The earlier localhost target resolved ::1 before IPv4 on this Windows host, adding about 2 seconds to a first connection. The final run targets the bound IPv4 address directly. Earlier reports are retained as load-test-localhost-results.json and load-test-pre-sequence-results.json."
+}

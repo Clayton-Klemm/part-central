@@ -1,0 +1,8 @@
+{
+  "environment": "isolated local verification clone",
+  "assetRows": 27,
+  "verifiedBytes": 4489888,
+  "missingFiles": 0,
+  "checksumOrSizeMismatches": 0,
+  "passed": true
+}

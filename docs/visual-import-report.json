@@ -1,0 +1,216 @@
+{
+  "apply": true,
+  "localServer": "http://127.0.0.1:8080",
+  "marker": "synthetic-visual-pack:v1",
+  "items": [
+    {
+      "part": "DG-1042",
+      "revision": "C",
+      "operationId": "op-dg1042-030",
+      "before": {
+        "version": 1,
+        "sketchId": "SK-DG1042-030-C",
+        "diagramId": "a79375bb-618b-4fbd-8257-a0fd8cbc5533"
+      },
+      "preservedCustomAssets": false,
+      "action": "already complete"
+    },
+    {
+      "part": "DG-2080",
+      "revision": "B",
+      "operationId": "op-dg2080-030",
+      "before": {
+        "version": 1,
+        "sketchId": "SK-DG2080-030-B",
+        "diagramId": "93ac2d73-3e07-4217-b90c-200609c907f5"
+      },
+      "preservedCustomAssets": false,
+      "action": "already complete"
+    },
+    {
+      "part": "DG-3105",
+      "revision": "A",
+      "operationId": "op-dg3105-030",
+      "before": {
+        "version": 5,
+        "sketchId": "SK-DG3105-030-A",
+        "diagramId": "556274bd-77fb-4fa7-9dab-fbf19c4cbb19"
+      },
+      "preservedCustomAssets": true,
+      "action": "already complete"
+    },
+    {
+      "part": "RD-4200",
+      "revision": "B",
+      "operationId": "op-rd4200-b-020",
+      "before": {
+        "version": 0,
+        "sketchId": "SK-RD4200-020-B",
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "SK-RD4200-020-B",
+        "diagramId": "a2703829-c4fd-443e-9669-538b9ca04600"
+      }
+    },
+    {
+      "part": "DF-5200",
+      "revision": "A",
+      "operationId": "op-df5200-a-030",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "a4d6bf14-96d9-4c01-8d23-23b02b1ff7cc",
+        "diagramId": "b265dfd0-ebd0-4c0d-8e39-620b1682c2a6"
+      }
+    },
+    {
+      "part": "BC-5300",
+      "revision": "A",
+      "operationId": "op-bc5300-a-030",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "71bc5977-8ee7-499d-857a-bd21ddbfdfd5",
+        "diagramId": "95ae692c-bdb3-4bc6-8158-da46e6cb4fb2"
+      }
+    },
+    {
+      "part": "AF-5400",
+      "revision": "A",
+      "operationId": "op-af5400-a-030",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "ddcfb6e3-e0e4-4e16-ac7a-83226913ad8f",
+        "diagramId": "778fc441-5bbb-4204-883d-b309d6437dd1"
+      }
+    },
+    {
+      "part": "SS-5500",
+      "revision": "A",
+      "operationId": "op-ss5500-a-030",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "69882166-1867-4907-8119-bc004bf56419",
+        "diagramId": "fdb72a57-5070-417f-98d6-7405a6c24290"
+      }
+    },
+    {
+      "part": "MF-6100",
+      "revision": "B",
+      "operationId": "op-mf6100-b-040",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "2c732060-fe91-4270-ada9-e66399e7f5b4",
+        "diagramId": "6c17738c-262c-4838-8d13-f9253340202e"
+      }
+    },
+    {
+      "part": "PH-7200",
+      "revision": "A",
+      "operationId": "op-ph7200-a-030",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "87c2f386-ed94-411c-b096-71224047996d",
+        "diagramId": "8847a855-00de-4768-93d9-bed1d223f536"
+      }
+    },
+    {
+      "part": "MF-6100",
+      "revision": "A",
+      "operationId": "op-mf6100-a-040",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "c8a0e240-12c7-4470-a3d6-1d677b1dee16",
+        "diagramId": "5fb38043-3f53-477e-89e1-efa558c77996"
+      }
+    },
+    {
+      "part": "MF-6100",
+      "revision": "C",
+      "operationId": "op-mf6100-c-040",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "84815369-2862-41c5-94db-348c51af44f0",
+        "diagramId": "b016ecba-95b3-4916-8b46-9f91a031aa2f"
+      }
+    },
+    {
+      "part": "DF-8100",
+      "revision": "B",
+      "operationId": "f8886400-0bfc-4899-8d35-a280d9708884",
+      "before": {
+        "version": 0,
+        "sketchId": null,
+        "diagramId": null
+      },
+      "preservedCustomAssets": false,
+      "action": "publish documentation edition",
+      "after": {
+        "version": 1,
+        "sketchId": "26bbd6b3-c8a9-45d0-865d-723ef8b0c6a7",
+        "diagramId": "1cd52f4c-4787-4cf1-aa73-84e152826907"
+      }
+    }
+  ],
+  "additionalActiveParts": [
+    "DF-8100"
+  ]
+}

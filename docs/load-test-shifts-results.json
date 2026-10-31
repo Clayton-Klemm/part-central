@@ -1,0 +1,198 @@
+{
+  "startedAt": "2026-10-26T20:29:06.180455+00:00",
+  "target": "http://127.0.0.1:8081",
+  "scenario": "Authenticated synchronized burst: catalog + part + job samples across shifts + all nominal readings with employee/shift/expectedSequence + guarded completion + exact job history + archive read",
+  "users": 100,
+  "iterationsPerUser": 3,
+  "selectedShiftCodes": [
+    "1",
+    "2",
+    "71"
+  ],
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 300,
+  "completedSheets": 300,
+  "jobPrefix": "LOAD-20261026T202906-335A11",
+  "elapsedSeconds": 7.198,
+  "requestsPerSecond": 583.48,
+  "authentication": {
+    "mode": "local employee session cookie",
+    "employeeRange": "1000\u20131099",
+    "loginRequests": 101,
+    "loginOutsideMeasuredPhase": true,
+    "serverIdentityVerified": true
+  },
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing, server employee-session checks, and network time. Client creation, readiness checks, and employee sign-in are excluded.",
+    "This run used a local isolated database and reference-file clone. The separate operator stack remained running on the same host; timing is not an isolated hardware experiment."
+  ],
+  "overall": {
+    "requests": 4200,
+    "errors": 0,
+    "statuses": {
+      "200": 1500,
+      "201": 2700
+    },
+    "p50_ms": 131.95,
+    "p95_ms": 275.6,
+    "p99_ms": 418.09,
+    "max_ms": 731.32
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 84.95,
+      "p95_ms": 208.95,
+      "p99_ms": 305.31,
+      "max_ms": 355.28
+    },
+    "GET catalog": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 135.56,
+      "p95_ms": 238.2,
+      "p99_ms": 362.44,
+      "max_ms": 506.41
+    },
+    "GET job history summaries": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 115.7,
+      "p95_ms": 238.67,
+      "p99_ms": 267.52,
+      "max_ms": 279.31
+    },
+    "GET part requirements": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 155.37,
+      "p95_ms": 294.58,
+      "p99_ms": 365.37,
+      "max_ms": 584.83
+    },
+    "POST complete sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 108.42,
+      "p95_ms": 230.33,
+      "p99_ms": 290.36,
+      "max_ms": 377.45
+    },
+    "POST measurement": {
+      "requests": 2400,
+      "errors": 0,
+      "statuses": {
+        "201": 2400
+      },
+      "p50_ms": 130.8,
+      "p95_ms": 249.61,
+      "p99_ms": 359.46,
+      "max_ms": 490.88
+    },
+    "POST start sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "201": 300
+      },
+      "p50_ms": 244.8,
+      "p95_ms": 473.7,
+      "p99_ms": 515.33,
+      "max_ms": 731.32
+    }
+  },
+  "failures": [],
+  "workstationFailures": [],
+  "regressionBudget": {
+    "maxP95Ms": 1000.0,
+    "maxUnexpectedErrors": 0,
+    "passed": true,
+    "scope": "A reproducible local regression gate, not a production SLA or capacity proof."
+  },
+  "schemaVersion": "0010_weekend_shift",
+  "serverEnvironment": {
+    "dockerServerVersion": "29.8.2",
+    "logicalCpus": 32,
+    "availableMemoryBytes": 20967440384,
+    "apiWorkers": 4,
+    "poolSizePerWorker": 5,
+    "poolOverflowPerWorker": 5,
+    "maxApiConnections": 40,
+    "postgresVersion": "17.11",
+    "postgresMaxConnections": 100
+  },
+  "verificationEnvironment": {
+    "kind": "isolated local Compose clone",
+    "project": "part-central-verify",
+    "target": "http://127.0.0.1:8081",
+    "sourceSchema": "0009_native_sketch_scope",
+    "referenceFilesCopiedLocally": true,
+    "operatorStackRemainedRunning": true,
+    "syntheticTrafficOnOperatorStack": false,
+    "retention": "Verification volumes and labeled jobs retained locally; containers stopped after browser checks."
+  },
+  "integrityEvidence": {
+    "beforeReport": "database-audit-before.json",
+    "afterReport": "database-audit-after.json",
+    "allInvariantsPassedBeforeAndAfter": true,
+    "invariantCountBefore": 11,
+    "invariantCountAfter": 11,
+    "rowCountsBeforeLoad": {
+      "characteristics": 128,
+      "employee_sessions": 322,
+      "employees": 109,
+      "feature_guides": 122,
+      "inspection_runs": 1029,
+      "jobs": 619,
+      "measurements": 8187,
+      "operation_reference_versions": 24,
+      "operation_sketches": 4,
+      "operations": 24,
+      "part_revisions": 24,
+      "parts": 16,
+      "reference_assets": 27
+    },
+    "rowCountsAfterLoad": {
+      "characteristics": 128,
+      "employee_sessions": 423,
+      "employees": 109,
+      "feature_guides": 122,
+      "inspection_runs": 1329,
+      "jobs": 719,
+      "measurements": 10587,
+      "operation_reference_versions": 24,
+      "operation_sketches": 4,
+      "operations": 24,
+      "part_revisions": 24,
+      "parts": 16,
+      "reference_assets": 27
+    },
+    "note": "Both snapshots are on the isolated clone after PostgreSQL guards/races and labeled browser verification. No other traffic targeted the clone during the measured burst."
+  }
+}

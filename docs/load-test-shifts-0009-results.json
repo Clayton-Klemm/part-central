@@ -1,0 +1,182 @@
+{
+  "startedAt": "2026-10-26T18:58:12.183193+00:00",
+  "target": "http://127.0.0.1:8080",
+  "scenario": "Authenticated synchronized burst: catalog + part + job samples across shifts + all nominal readings with employee/shift/expectedSequence + guarded completion + exact job history + archive read",
+  "users": 100,
+  "iterationsPerUser": 3,
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 300,
+  "completedSheets": 300,
+  "jobPrefix": "LOAD-20261026T185812-507336",
+  "elapsedSeconds": 7.736,
+  "requestsPerSecond": 542.94,
+  "authentication": {
+    "mode": "local employee session cookie",
+    "employeeRange": "1000\u20131099",
+    "loginRequests": 101,
+    "loginOutsideMeasuredPhase": true,
+    "serverIdentityVerified": true
+  },
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing, server employee-session checks, and network time. Client creation, readiness checks, and employee sign-in are excluded."
+  ],
+  "overall": {
+    "requests": 4200,
+    "errors": 0,
+    "statuses": {
+      "200": 1500,
+      "201": 2700
+    },
+    "p50_ms": 135.89,
+    "p95_ms": 279.15,
+    "p99_ms": 423.29,
+    "max_ms": 747.08
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 83.54,
+      "p95_ms": 213.2,
+      "p99_ms": 300.1,
+      "max_ms": 313.56
+    },
+    "GET catalog": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 134.71,
+      "p95_ms": 230.55,
+      "p99_ms": 265.49,
+      "max_ms": 371.87
+    },
+    "GET job history summaries": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 117.95,
+      "p95_ms": 237.88,
+      "p99_ms": 341.6,
+      "max_ms": 544.17
+    },
+    "GET part requirements": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 161.1,
+      "p95_ms": 321.65,
+      "p99_ms": 381.13,
+      "max_ms": 703.94
+    },
+    "POST complete sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 108.47,
+      "p95_ms": 231.34,
+      "p99_ms": 266.74,
+      "max_ms": 338.25
+    },
+    "POST measurement": {
+      "requests": 2400,
+      "errors": 0,
+      "statuses": {
+        "201": 2400
+      },
+      "p50_ms": 135.66,
+      "p95_ms": 256.83,
+      "p99_ms": 350.3,
+      "max_ms": 438.08
+    },
+    "POST start sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "201": 300
+      },
+      "p50_ms": 228.67,
+      "p95_ms": 487.23,
+      "p99_ms": 526.07,
+      "max_ms": 747.08
+    }
+  },
+  "failures": [],
+  "workstationFailures": [],
+  "regressionBudget": {
+    "maxP95Ms": 1000.0,
+    "maxUnexpectedErrors": 0,
+    "passed": true,
+    "scope": "A reproducible local regression gate, not a production SLA or capacity proof."
+  },
+  "schemaVersion": "0009_native_sketch_scope",
+  "serverEnvironment": {
+    "dockerServerVersion": "29.8.2",
+    "logicalCpus": 32,
+    "availableMemoryBytes": 20967440384,
+    "apiWorkers": 4,
+    "poolSizePerWorker": 5,
+    "poolOverflowPerWorker": 5,
+    "maxApiConnections": 40,
+    "postgresVersion": "17.11",
+    "postgresMaxConnections": 100
+  },
+  "integrityEvidence": {
+    "beforeReport": "database-audit-before.json",
+    "afterReport": "database-audit-after.json",
+    "allInvariantsPassedBeforeAndAfter": true,
+    "invariantCountBefore": 10,
+    "invariantCountAfter": 11,
+    "rowCountsBeforeLoad": {
+      "characteristics": 124,
+      "employee_sessions": 216,
+      "employees": 108,
+      "feature_guides": 118,
+      "inspection_runs": 722,
+      "jobs": 516,
+      "measurements": 5733,
+      "operation_reference_versions": 11,
+      "operation_sketches": 4,
+      "operations": 22,
+      "part_revisions": 22,
+      "parts": 15,
+      "reference_assets": 7
+    },
+    "rowCountsAfterLoad": {
+      "characteristics": 124,
+      "employee_sessions": 318,
+      "employees": 109,
+      "feature_guides": 118,
+      "inspection_runs": 1022,
+      "jobs": 616,
+      "measurements": 8133,
+      "operation_reference_versions": 11,
+      "operation_sketches": 4,
+      "operations": 22,
+      "part_revisions": 22,
+      "parts": 15,
+      "reference_assets": 7
+    },
+    "note": "Both snapshots are after the PostgreSQL,shift,reference,catalog and native-sketch smoke checks. The final audit additionally verifies exact native-sketch ownership."
+  }
+}

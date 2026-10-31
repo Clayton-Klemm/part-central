@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-26T20:30:08.177773+00:00",
+  "beforeSchema": "0009_native_sketch_scope",
+  "afterSchema": "0010_weekend_shift",
+  "passed": true,
+  "tables": {
+    "measurements": {
+      "beforeRows": 8147,
+      "afterRows": 8147,
+      "preExistingCompared": 8147,
+      "additionalRows": 0,
+      "legitimateDraftCompletions": 0,
+      "missingRows": 0,
+      "alteredProtectedFacts": 0,
+      "passed": true,
+      "beforeProtectedSha256": "9fec6429360747a95e8ca37737a30eaf06950b816cd602760949980966b53a97",
+      "afterProtectedSha256": "9fec6429360747a95e8ca37737a30eaf06950b816cd602760949980966b53a97"
+    },
+    "inspectionRuns": {
+      "beforeRows": 1024,
+      "afterRows": 1024,
+      "preExistingCompared": 1024,
+      "additionalRows": 0,
+      "legitimateDraftCompletions": 0,
+      "missingRows": 0,
+      "alteredProtectedFacts": 0,
+      "passed": true,
+      "beforeProtectedSha256": "3448315a37f5e8f71cbb323aae40b753b32cea3396325625bd289c9123d78090",
+      "afterProtectedSha256": "3448315a37f5e8f71cbb323aae40b753b32cea3396325625bd289c9123d78090"
+    },
+    "referenceAssets": {
+      "beforeRows": 26,
+      "afterRows": 26,
+      "preExistingCompared": 26,
+      "additionalRows": 0,
+      "legitimateDraftCompletions": 0,
+      "missingRows": 0,
+      "alteredProtectedFacts": 0,
+      "passed": true,
+      "beforeProtectedSha256": "91762766a25fb0895267836b77c826e8d402dc41b8af9c7ac3267284cf80e769",
+      "afterProtectedSha256": "91762766a25fb0895267836b77c826e8d402dc41b8af9c7ac3267284cf80e769"
+    },
+    "referenceVersions": {
+      "beforeRows": 21,
+      "afterRows": 21,
+      "preExistingCompared": 21,
+      "additionalRows": 0,
+      "legitimateDraftCompletions": 0,
+      "missingRows": 0,
+      "alteredProtectedFacts": 0,
+      "passed": true,
+      "beforeProtectedSha256": "dc6f6750f1839640a971a5403f98bffe07c1e0cdedf8f2c34d4fe73c099c93f2",
+      "afterProtectedSha256": "dc6f6750f1839640a971a5403f98bffe07c1e0cdedf8f2c34d4fe73c099c93f2"
+    }
+  },
+  "scope": "All pre-existing immutable measurements/references, all original draft-sheet pinned facts, and every pre-existing completed signoff. New appends and legitimate draft completions are permitted and counted, never relabeled.",
+  "limits": "Hash equality demonstrates selected fact preservation, not a backup or a substitute for isolated migration and adverse-write tests."
+}

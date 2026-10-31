@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-26T19:33:04.728Z",
+  "scope": "Feature selection and rendered canvas registration for every active non-gear part. Keyboard activation of accessible model callouts; representative mouse rotation and click checks recorded separately.",
+  "parts": [
+    {
+      "part": "MF-6100",
+      "family": "threaded-block",
+      "features": 9,
+      "passed": true
+    },
+    {
+      "part": "DF-5200",
+      "family": "differential-case",
+      "features": 8,
+      "passed": true
+    },
+    {
+      "part": "BC-5300",
+      "family": "bearing-cap",
+      "features": 7,
+      "passed": true
+    },
+    {
+      "part": "AF-5400",
+      "family": "flange",
+      "features": 7,
+      "passed": true
+    },
+    {
+      "part": "SS-5500",
+      "family": "shaft",
+      "features": 8,
+      "passed": true
+    },
+    {
+      "part": "PH-7200",
+      "family": "housing",
+      "features": 8,
+      "passed": true
+    },
+    {
+      "part": "RD-4200",
+      "family": "ring",
+      "features": 3,
+      "passed": true
+    },
+    {
+      "part": "DF-8100",
+      "family": "differential-case",
+      "features": 8,
+      "passed": true
+    }
+  ],
+  "additionalControls": {
+    "mouseOrbit": true,
+    "mouseCalloutSelection": true,
+    "keyboardCalloutSelection": true,
+    "fitPart": true,
+    "focusFeature": true,
+    "topView": true,
+    "sectionToggle": true,
+    "pause": true,
+    "alternate2DDiagram": true,
+    "returnTo3D": true,
+    "compactHoverPreview": true,
+    "originalDG1042": true,
+    "consoleErrors": []
+  },
+  "finalBuildCheckedAt": "2026-10-26T19:41:23.037Z"
+}

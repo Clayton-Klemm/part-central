@@ -1,0 +1,18 @@
+{
+  "measurements": {
+    "rows": 5701,
+    "sha256": "c1e5280eff58806f133936d4dd07b5dd1b7adc7202d6f37d1e0d264eca934162"
+  },
+  "inspectionRuns": {
+    "rows": 718,
+    "sha256": "2ad20c56f50d0a39709fc338493d82d773b338078fbc3b1b5570995501dafddc"
+  },
+  "referenceAssets": {
+    "rows": 6,
+    "sha256": "5d7c22172edbc60b8f68919b58c3e978488e3f30cddd312cf9ec9846ebe01e94"
+  },
+  "referenceVersions": {
+    "rows": 8,
+    "sha256": "4e6910d77bde3a736e8a1cf333fafc00cdfb6705e1f213d72c42acd250804130"
+  }
+}

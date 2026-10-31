@@ -1,0 +1,257 @@
+{
+  "verifiedAt": "2026-10-26T19:01:05.726088+00:00",
+  "historicalSnapshotChecks": [
+    {
+      "runId": "745490ec-92ef-4d05-9be3-e270b22101c7",
+      "revisionId": "rev-dg1042-c",
+      "beforeSha256": "86f535a0ab959ec3cd2a15c7f46ff9de37c4b02ee1f4ae7c8a0d3dfc2e51d377",
+      "afterSha256": "86f535a0ab959ec3cd2a15c7f46ff9de37c4b02ee1f4ae7c8a0d3dfc2e51d377",
+      "unchanged": true
+    },
+    {
+      "runId": "4d814b54-9169-4c9d-8679-91ff9bc6e489",
+      "revisionId": "rev-dg2080-b",
+      "beforeSha256": "b6120cb85762867b62eed5bdd574a26233cdde65be7cf52e6dde753b3f5aa6c6",
+      "afterSha256": "b6120cb85762867b62eed5bdd574a26233cdde65be7cf52e6dde753b3f5aa6c6",
+      "unchanged": true
+    },
+    {
+      "runId": "92c759d0-b264-4abc-a43a-1794d99c7a06",
+      "revisionId": "rev-dg3105-a",
+      "beforeSha256": "34fd2a2318c25ac782c5dde1d6f129c3c8f7d6a916005dc94813fac4616b7fed",
+      "afterSha256": "34fd2a2318c25ac782c5dde1d6f129c3c8f7d6a916005dc94813fac4616b7fed",
+      "unchanged": true
+    },
+    {
+      "runId": "150e9ce6-e530-4085-8de2-67c7ae3bf3aa",
+      "revisionId": "rev-df5200-a",
+      "beforeSha256": "1805793f5301eed272c535860391efa72d0848c5e059956d57389970f2fc7408",
+      "afterSha256": "1805793f5301eed272c535860391efa72d0848c5e059956d57389970f2fc7408",
+      "unchanged": true
+    },
+    {
+      "runId": "afee073a-f951-4d38-8427-6544f52d92b5",
+      "revisionId": "rev-mf6100-b",
+      "beforeSha256": "370b8bd7d23c4cc7f9ad9fda0d957788bc1d22fc3357be56f1177501747d48fd",
+      "afterSha256": "370b8bd7d23c4cc7f9ad9fda0d957788bc1d22fc3357be56f1177501747d48fd",
+      "unchanged": true
+    },
+    {
+      "runId": "8dbdf812-7169-4ac2-965f-513adb670f18",
+      "revisionId": "rev-rd4200-a",
+      "beforeSha256": "181eeca7c8e7019ec963e2ea8345f8a8c37dc2a5ffc34bb1561b98abadcec24e",
+      "afterSha256": "181eeca7c8e7019ec963e2ea8345f8a8c37dc2a5ffc34bb1561b98abadcec24e",
+      "unchanged": true
+    }
+  ],
+  "revisionDocumentation": [
+    {
+      "part": "DG-1042",
+      "revision": "C",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "DG-2080",
+      "revision": "B",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "DG-3105",
+      "revision": "A",
+      "version": 5,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "RD-4200",
+      "revision": "B",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "DF-5200",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "BC-5300",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "AF-5400",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "SS-5500",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "MF-6100",
+      "revision": "B",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "PH-7200",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "MF-6100",
+      "revision": "A",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "MF-6100",
+      "revision": "C",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    },
+    {
+      "part": "DF-8100",
+      "revision": "B",
+      "version": 1,
+      "sketch": true,
+      "diagram": true,
+      "animation": true
+    }
+  ],
+  "activeParts": [
+    {
+      "part": "AF-5400",
+      "revision": "A",
+      "guidedCharacteristics": 7,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "BC-5300",
+      "revision": "A",
+      "guidedCharacteristics": 7,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "DF-5200",
+      "revision": "A",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "DF-8100",
+      "revision": "B",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "DG-1042",
+      "revision": "C",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "diagram"
+      ]
+    },
+    {
+      "part": "DG-2080",
+      "revision": "B",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "diagram"
+      ]
+    },
+    {
+      "part": "DG-3105",
+      "revision": "A",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "diagram"
+      ]
+    },
+    {
+      "part": "MF-6100",
+      "revision": "B",
+      "guidedCharacteristics": 9,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "PH-7200",
+      "revision": "A",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    },
+    {
+      "part": "RD-4200",
+      "revision": "B",
+      "guidedCharacteristics": 3,
+      "verifiedAssetChecksums": [
+        "diagram"
+      ]
+    },
+    {
+      "part": "SS-5500",
+      "revision": "A",
+      "guidedCharacteristics": 8,
+      "verifiedAssetChecksums": [
+        "sketch",
+        "diagram"
+      ]
+    }
+  ],
+  "idempotent": true,
+  "counts": {
+    "activeParts": 11,
+    "guidedCharacteristics": 82,
+    "completeRevisionReferences": 13,
+    "unchangedHistoricalSnapshots": 6
+  }
+}

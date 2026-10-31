@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-26",
+  "environment": "Isolated local Compose clone at http://127.0.0.1:8081",
+  "webImageSha256": "1aaa0407947d53e1dc19b826543dfb150d56d2366c493c53863dda988a01e46a",
+  "schemaVersion": "0010_weekend_shift",
+  "frontendTestsPassed": 82,
+  "backendGateTestsPassed": 146,
+  "backendChanged": false,
+  "syntheticJobNumber": "VERIFY-SAMPLES-UI",
+  "newSampleChecks": {
+    "freshShiftRequired": true,
+    "newSheetsStartBlank": true,
+    "savedPriorSampleNotAutomaticallyCompleted": true,
+    "startingFromSample01Suggested03After02Existed": true,
+    "labelsAreEditableDisplayIdentifiers": true,
+    "suggestionScope": "Latest 50 job summaries; no uniqueness reservation"
+  },
+  "initialSavedSamples": [
+    { "label": "01", "employeeNumber": "1234", "shift": "1", "events": 7, "status": "draft" },
+    { "label": "02", "employeeNumber": "5678", "shift": "2", "events": 7, "status": "completed" },
+    { "label": "03", "employeeNumber": "9012", "shift": "71", "events": 7, "status": "draft" }
+  ],
+  "peerRefreshChecks": {
+    "sampleLabel": "01",
+    "primaryTabHeldEarlierHistory": true,
+    "peerSurface": "Second browser tab acting as another workstation",
+    "sharedAuthenticatedEmployeeSession": true,
+    "independentWorkstationSessionsSimulated": false,
+    "peerEmployeeNumber": "9012",
+    "peerShift": "1",
+    "correctedFeature": "07",
+    "originalValue": "0.04",
+    "correctedValue": "0.035",
+    "peerExplicitlyCompleted": true,
+    "refreshUpdatedHistoryStatusSignerAndShift": true,
+    "refreshUpdatedTopSampleStrip": true,
+    "viewLoadedImmutableCompletedSheet": true,
+    "original1234Shift1EventRetained": true,
+    "correction9012Shift1EventRetained": true,
+    "finalEventsOnSample01": 8
+  },
+  "finalSamples": [
+    { "label": "01", "completedByEmployeeNumber": "9012", "completedShift": "1", "events": 8, "status": "completed" },
+    { "label": "02", "completedByEmployeeNumber": "5678", "completedShift": "2", "events": 7, "status": "completed" },
+    { "label": "03", "lastRecordedByEmployeeNumber": "9012", "lastRecordedShift": "71", "events": 7, "status": "draft" }
+  ],
+  "primaryTabConsoleErrors": 0,
+  "peerTabConsoleErrors": 0,
+  "screenshots": ["sample-inspection-history.jpg", "new-sample-inspection.jpg"],
+  "retention": "Verification containers stopped; database and reference volumes retained locally.",
+  "operatorInspectionRecordsChangedByVerification": false,
+  "limits": "Interactive browser observations supplement automated tests. No new database benchmark or migration gate was run for this frontend-only change; the original schema-0010 report and Manim evidence are retained."
+}

@@ -1,0 +1,119 @@
+{
+  "startedAt": "2026-10-26T17:12:11.509047+00:00",
+  "target": "http://localhost:8080",
+  "scenario": "Synchronized burst: catalog + part + start job sheet + all nominal readings + completion + job summary search + archive read",
+  "users": 100,
+  "iterationsPerUser": 1,
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 100,
+  "completedSheets": 100,
+  "jobPrefix": "LOAD-20261026T171211-7EDB37",
+  "elapsedSeconds": 4.284,
+  "requestsPerSecond": 326.78,
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing and network time. Client creation and readiness checks are excluded."
+  ],
+  "overall": {
+    "requests": 1400,
+    "errors": 0,
+    "statuses": {
+      "200": 500,
+      "201": 900
+    },
+    "p50_ms": 126.42,
+    "p95_ms": 2178.69,
+    "p99_ms": 2272.49,
+    "max_ms": 2394.85
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 40.39,
+      "p95_ms": 108.99,
+      "p99_ms": 136.7,
+      "max_ms": 191.35
+    },
+    "GET catalog": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 2200.15,
+      "p95_ms": 2299.75,
+      "p99_ms": 2360.85,
+      "max_ms": 2394.85
+    },
+    "GET job history summaries": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 110.66,
+      "p95_ms": 152.25,
+      "p99_ms": 171.22,
+      "max_ms": 217.57
+    },
+    "GET part requirements": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 174.6,
+      "p95_ms": 245.09,
+      "p99_ms": 259.5,
+      "max_ms": 482.57
+    },
+    "POST complete sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 88.98,
+      "p95_ms": 131.4,
+      "p99_ms": 145.07,
+      "max_ms": 148.61
+    },
+    "POST measurement": {
+      "requests": 800,
+      "errors": 0,
+      "statuses": {
+        "201": 800
+      },
+      "p50_ms": 128.3,
+      "p95_ms": 245.98,
+      "p99_ms": 292.35,
+      "max_ms": 316.43
+    },
+    "POST start sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "201": 100
+      },
+      "p50_ms": 301.22,
+      "p95_ms": 361.75,
+      "p99_ms": 540.52,
+      "max_ms": 684.8
+    }
+  },
+  "failures": [],
+  "workstationFailures": []
+}

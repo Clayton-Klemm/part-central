@@ -1,0 +1,27 @@
+[
+  {
+    "script": "api/tests/postgres_smoke.py",
+    "exitCode": 0,
+    "output": "PASS PostgreSQL reseeding leaves released definitions unchanged\nPASS revision/operation validation and incomplete-run rejection\nPASS exact inclusive boundaries and append-only correction history\nPASS released-definition, append-only, cross-operation and tolerance database guards (rolled back)\nPASS four concurrent appends serialize without lost readings\nPASS competing completion/append, locked final record, and idempotent completion\nVerification run retained: da6d2d08-7cfa-47b5-8731-843d5225b242 / sample PG-VERIFY-2d5b81ce / 17 events"
+  },
+  {
+    "script": "api/tests/shift_smoke.py",
+    "exitCode": 0,
+    "output": "PASS employee/shift handoff keeps original author, correction and exact-job summary\nPASS two employees competing at the same sequence yield one save and one conflict; no lost event\nPASS direct database writes accept weekend 71 and reject missing/retired/invalid attribution (rolled back)\nPASS competing completion/append, immutable completion signer, and idempotent retry\nVerification sheet retained: SHIFT-VERIFY-1423670CAD / 06ef5422-0853-4b30-9284-6fa728789347 / 10 events"
+  },
+  {
+    "script": "api/tests/reference_smoke.py",
+    "exitCode": 0,
+    "output": "PASS live administrator authorization and immutable PNG upload/read/checksum\nPASS PostgreSQL asset/edition append-only guards; invalid SQL rolled back\nPASS stale publication rejection and earlier inspection reference pinning\nPASS persistent asset volume writable by unprivileged uid10001\nDG-3105 current reference version: 7; built-in sketch and 3D retained; original diagram selection restored\nRetained verification inspection: 4e8fa575-6933-42a7-aaf3-2cae1061cfd2"
+  },
+  {
+    "script": "api/tests/catalog_smoke.py",
+    "exitCode": 0,
+    "output": "PASS local employee roles, draft preparation, MIN/MAX depth, visual template, release, active uniqueness, historical preservation, and deactivation\nRetained synthetic part: VERIFY-3C102BD2 / verification job JOB-LIBRARY-VERIFY"
+  },
+  {
+    "script": "api/tests/native_sketch_smoke.py",
+    "exitCode": 0,
+    "output": "PASS dog-clutch: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS differential-case: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS bearing-cap: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS flange: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS shaft: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS threaded-block: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS housing: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS ring: opaque IDs, exact sketch/revision ownership, generated path, sequential editions and immutability\nPASS all native-sketch fixture writes rolled back; persistent table counts unchanged"
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "startedAt": "2026-10-26T18:46:12.140591+00:00",
+  "target": "http://127.0.0.1:8080",
+  "scenario": "Authenticated synchronized burst: catalog + part + job samples across shifts + all nominal readings with employee/shift/expectedSequence + guarded completion + exact job history + archive read",
+  "users": 100,
+  "iterationsPerUser": 3,
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 300,
+  "completedSheets": 300,
+  "jobPrefix": "LOAD-20261026T184612-3C4043",
+  "elapsedSeconds": 7.06,
+  "requestsPerSecond": 594.86,
+  "authentication": {
+    "mode": "local employee session cookie",
+    "employeeRange": "1000\u20131099",
+    "loginRequests": 101,
+    "loginOutsideMeasuredPhase": true,
+    "serverIdentityVerified": true
+  },
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing, server employee-session checks, and network time. Client creation, readiness checks, and employee sign-in are excluded."
+  ],
+  "overall": {
+    "requests": 4200,
+    "errors": 0,
+    "statuses": {
+      "200": 1500,
+      "201": 2700
+    },
+    "p50_ms": 142.51,
+    "p95_ms": 257.0,
+    "p99_ms": 350.18,
+    "max_ms": 564.62
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 101.27,
+      "p95_ms": 185.79,
+      "p99_ms": 252.92,
+      "max_ms": 361.85
+    },
+    "GET catalog": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 140.55,
+      "p95_ms": 208.8,
+      "p99_ms": 249.1,
+      "max_ms": 332.17
+    },
+    "GET job history summaries": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 131.04,
+      "p95_ms": 245.36,
+      "p99_ms": 296.91,
+      "max_ms": 319.56
+    },
+    "GET part requirements": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 168.75,
+      "p95_ms": 273.96,
+      "p99_ms": 331.8,
+      "max_ms": 427.46
+    },
+    "POST complete sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "200": 300
+      },
+      "p50_ms": 113.56,
+      "p95_ms": 203.31,
+      "p99_ms": 262.99,
+      "max_ms": 365.37
+    },
+    "POST measurement": {
+      "requests": 2400,
+      "errors": 0,
+      "statuses": {
+        "201": 2400
+      },
+      "p50_ms": 140.55,
+      "p95_ms": 221.74,
+      "p99_ms": 280.32,
+      "max_ms": 348.12
+    },
+    "POST start sheet": {
+      "requests": 300,
+      "errors": 0,
+      "statuses": {
+        "201": 300
+      },
+      "p50_ms": 232.32,
+      "p95_ms": 393.06,
+      "p99_ms": 426.49,
+      "max_ms": 564.62
+    }
+  },
+  "failures": [],
+  "workstationFailures": [],
+  "regressionBudget": {
+    "maxP95Ms": 1000.0,
+    "maxUnexpectedErrors": 0,
+    "passed": true,
+    "scope": "A reproducible local regression gate, not a production SLA or capacity proof."
+  },
+  "serverEnvironment": {
+    "dockerServerVersion": "29.8.2",
+    "logicalCpus": 32,
+    "availableMemoryBytes": 20967440384,
+    "apiWorkers": 4,
+    "poolSizePerWorker": 5,
+    "poolOverflowPerWorker": 5,
+    "maxApiConnections": 40,
+    "postgresVersion": "17.11",
+    "postgresMaxConnections": 100
+  },
+  "integrityEvidence": {
+    "beforeReport": "database-audit-0008-before.json",
+    "afterReport": "database-audit-0008-after.json",
+    "allInvariantsPassedBeforeAndAfter": true,
+    "invariantCount": 10,
+    "rowCountsBeforeVerificationAndLoad": {
+      "characteristics": 120,
+      "employee_sessions": 105,
+      "employees": 106,
+      "feature_guides": 114,
+      "inspection_runs": 413,
+      "jobs": 411,
+      "measurements": 3247,
+      "operation_reference_versions": 5,
+      "operation_sketches": 4,
+      "operations": 20,
+      "part_revisions": 20,
+      "parts": 14,
+      "reference_assets": 2
+    },
+    "rowCountsAfterVerificationAndLoad": {
+      "characteristics": 120,
+      "employee_sessions": 212,
+      "employees": 108,
+      "feature_guides": 114,
+      "inspection_runs": 716,
+      "jobs": 514,
+      "measurements": 5684,
+      "operation_reference_versions": 5,
+      "operation_sketches": 4,
+      "operations": 20,
+      "part_revisions": 20,
+      "parts": 14,
+      "reference_assets": 2
+    },
+    "note": "Before snapshot precedes PostgreSQL/shift smoke checks as well as workload; extra labeled verification sheets/events are included in the difference."
+  },
+  "schemaVersion": "0008_shift_attribution",
+  "reportLabel": "Historical baseline before native sketch scope migration0009"
+}

@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "assumptions": "Explicit FD set and serialized run-row lock; live schema/transactions are tested separately.",
+  "losslessJoins": [
+    {
+      "intersection": [
+        "operation_id"
+      ],
+      "determines": [
+        "operation_code",
+        "operation_id",
+        "revision_id"
+      ],
+      "lossless": true
+    },
+    {
+      "intersection": [
+        "revision_id"
+      ],
+      "determines": [
+        "material",
+        "part_id",
+        "revision_code",
+        "revision_id"
+      ],
+      "lossless": true
+    },
+    {
+      "intersection": [
+        "part_id"
+      ],
+      "determines": [
+        "part_id",
+        "part_name",
+        "part_number"
+      ],
+      "lossless": true
+    }
+  ],
+  "illustrativeBytesSaved": 51194880,
+  "serializedRace": {
+    "successfulAppends": 1,
+    "staleConflicts": 1
+  }
+}

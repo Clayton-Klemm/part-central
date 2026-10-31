@@ -1,0 +1,936 @@
+{
+  "capturedAt": "2026-10-26T18:43:23.677797+00:00",
+  "schemaVersion": "0008_shift_attribution",
+  "readOnly": true,
+  "consistentSnapshot": "REPEATABLE READ",
+  "settings": {
+    "server_version": "17.11",
+    "max_connections": "100",
+    "shared_buffers": "128MB"
+  },
+  "rowCounts": {
+    "characteristics": 120,
+    "employee_sessions": 105,
+    "employees": 106,
+    "feature_guides": 114,
+    "inspection_runs": 413,
+    "jobs": 411,
+    "measurements": 3247,
+    "operation_reference_versions": 5,
+    "operation_sketches": 4,
+    "operations": 20,
+    "part_revisions": 20,
+    "parts": 14,
+    "reference_assets": 2
+  },
+  "tableAndIndexBytes": {
+    "characteristics": 147456,
+    "employee_sessions": 131072,
+    "employees": 24576,
+    "feature_guides": 57344,
+    "inspection_runs": 606208,
+    "jobs": 622592,
+    "measurements": 1572864,
+    "operation_reference_versions": 65536,
+    "operation_sketches": 65536,
+    "operations": 81920,
+    "part_revisions": 81920,
+    "parts": 49152,
+    "reference_assets": 65536
+  },
+  "invariantViolations": {
+    "at_most_one_active_revision_per_part": 0,
+    "active_revision_is_released": 0,
+    "run_operation_matches_pinned_revision": 0,
+    "measurement_belongs_to_run_operation": 0,
+    "unique_event_sequence_per_run": 0,
+    "valid_recorded_shift": 0,
+    "recorded_shift_has_employee": 0,
+    "completion_provenance_is_paired": 0,
+    "completed_run_has_every_characteristic": 0,
+    "stored_outcome_matches_exact_limits": 0
+  },
+  "passed": true,
+  "keysAndIndexes": {
+    "characteristics": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "characteristics_guide_id_key",
+          "columns": [
+            "guide_id"
+          ]
+        },
+        {
+          "name": "characteristics_operation_id_number_key",
+          "columns": [
+            "operation_id",
+            "number"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "guide_id"
+          ],
+          "targetTable": "feature_guides",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "operation_id"
+          ],
+          "targetTable": "operations",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "characteristics_guide_id_key",
+          "columns": [
+            "guide_id"
+          ],
+          "unique": true,
+          "predicate": ""
+        },
+        {
+          "name": "characteristics_operation_id_number_key",
+          "columns": [
+            "operation_id",
+            "number"
+          ],
+          "unique": true,
+          "predicate": ""
+        },
+        {
+          "name": "ix_characteristics_operation_id",
+          "columns": [
+            "operation_id"
+          ],
+          "unique": false,
+          "predicate": ""
+        }
+      ]
+    },
+    "employee_sessions": {
+      "primaryKey": [
+        "token_hash"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [
+        {
+          "columns": [
+            "employee_number"
+          ],
+          "targetTable": "employees",
+          "targetColumns": [
+            "number"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_employee_sessions_employee",
+          "columns": [
+            "employee_number"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "ix_employee_sessions_expiry",
+          "columns": [
+            "expires_at"
+          ],
+          "unique": false,
+          "predicate": ""
+        }
+      ]
+    },
+    "employees": {
+      "primaryKey": [
+        "number"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "indexes": []
+    },
+    "feature_guides": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "indexes": []
+    },
+    "inspection_runs": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [
+        {
+          "columns": [
+            "employee_number"
+          ],
+          "targetTable": "employees",
+          "targetColumns": [
+            "number"
+          ]
+        },
+        {
+          "columns": [
+            "completed_by_employee_number"
+          ],
+          "targetTable": "employees",
+          "targetColumns": [
+            "number"
+          ]
+        },
+        {
+          "columns": [
+            "job_id"
+          ],
+          "targetTable": "jobs",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "operation_id",
+            "revision_id"
+          ],
+          "targetTable": "operations",
+          "targetColumns": [
+            "id",
+            "revision_id"
+          ]
+        },
+        {
+          "columns": [
+            "revision_id"
+          ],
+          "targetTable": "part_revisions",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_runs_created_id",
+          "columns": [
+            "created_at",
+            "id"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "ix_runs_job_created",
+          "columns": [
+            "job_id",
+            "created_at"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "ix_runs_revision_created",
+          "columns": [
+            "revision_id",
+            "created_at"
+          ],
+          "unique": false,
+          "predicate": ""
+        }
+      ]
+    },
+    "jobs": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "name": "ix_jobs_number",
+          "columns": [
+            "number"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "measurements": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "measurements_run_id_sequence_key",
+          "columns": [
+            "run_id",
+            "sequence"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "employee_number"
+          ],
+          "targetTable": "employees",
+          "targetColumns": [
+            "number"
+          ]
+        },
+        {
+          "columns": [
+            "feature_id"
+          ],
+          "targetTable": "characteristics",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "run_id"
+          ],
+          "targetTable": "inspection_runs",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_measurements_run_feature_time",
+          "columns": [
+            "run_id",
+            "feature_id",
+            "recorded_at"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "measurements_run_id_sequence_key",
+          "columns": [
+            "run_id",
+            "sequence"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "operation_reference_versions": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "operation_reference_versions_operation_id_version_key",
+          "columns": [
+            "operation_id",
+            "version"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "builtin_sketch_id"
+          ],
+          "targetTable": "operation_sketches",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "diagram_asset_id"
+          ],
+          "targetTable": "reference_assets",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "operation_id"
+          ],
+          "targetTable": "operations",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "sketch_asset_id"
+          ],
+          "targetTable": "reference_assets",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_reference_versions_operation_version",
+          "columns": [
+            "operation_id",
+            "version"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "operation_reference_versions_operation_id_version_key",
+          "columns": [
+            "operation_id",
+            "version"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "operation_sketches": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "operation_sketches_id_revision_id_key",
+          "columns": [
+            "id",
+            "revision_id"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "revision_id"
+          ],
+          "targetTable": "part_revisions",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_operation_sketches_revision_id",
+          "columns": [
+            "revision_id"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "operation_sketches_id_revision_id_key",
+          "columns": [
+            "id",
+            "revision_id"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "operations": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "operations_id_revision_id_key",
+          "columns": [
+            "id",
+            "revision_id"
+          ]
+        },
+        {
+          "name": "operations_revision_id_code_key",
+          "columns": [
+            "revision_id",
+            "code"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "revision_id"
+          ],
+          "targetTable": "part_revisions",
+          "targetColumns": [
+            "id"
+          ]
+        },
+        {
+          "columns": [
+            "sketch_id",
+            "revision_id"
+          ],
+          "targetTable": "operation_sketches",
+          "targetColumns": [
+            "id",
+            "revision_id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_operations_revision_id",
+          "columns": [
+            "revision_id"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "operations_id_revision_id_key",
+          "columns": [
+            "id",
+            "revision_id"
+          ],
+          "unique": true,
+          "predicate": ""
+        },
+        {
+          "name": "operations_revision_id_code_key",
+          "columns": [
+            "revision_id",
+            "code"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "part_revisions": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "part_revisions_part_id_code_key",
+          "columns": [
+            "part_id",
+            "code"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "part_id"
+          ],
+          "targetTable": "parts",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_part_revisions_part_id",
+          "columns": [
+            "part_id"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "part_revisions_part_id_code_key",
+          "columns": [
+            "part_id",
+            "code"
+          ],
+          "unique": true,
+          "predicate": ""
+        },
+        {
+          "name": "uq_part_revision_active",
+          "columns": [
+            "part_id"
+          ],
+          "unique": true,
+          "predicate": "is_active"
+        }
+      ]
+    },
+    "parts": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "name": "ix_parts_number",
+          "columns": [
+            "number"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    },
+    "reference_assets": {
+      "primaryKey": [
+        "id"
+      ],
+      "uniqueConstraints": [
+        {
+          "name": "reference_assets_storage_key_key",
+          "columns": [
+            "storage_key"
+          ]
+        }
+      ],
+      "foreignKeys": [
+        {
+          "columns": [
+            "operation_id"
+          ],
+          "targetTable": "operations",
+          "targetColumns": [
+            "id"
+          ]
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ix_reference_assets_operation_created",
+          "columns": [
+            "operation_id",
+            "created_at"
+          ],
+          "unique": false,
+          "predicate": ""
+        },
+        {
+          "name": "reference_assets_storage_key_key",
+          "columns": [
+            "storage_key"
+          ],
+          "unique": true,
+          "predicate": ""
+        }
+      ]
+    }
+  },
+  "triggerNames": [
+    {
+      "table": "characteristics",
+      "name": "released_definition_guard"
+    },
+    {
+      "table": "employees",
+      "name": "employee_identity_guard"
+    },
+    {
+      "table": "feature_guides",
+      "name": "released_definition_guard"
+    },
+    {
+      "table": "inspection_runs",
+      "name": "completion_attribution_guard"
+    },
+    {
+      "table": "inspection_runs",
+      "name": "inspection_run_guard"
+    },
+    {
+      "table": "inspection_runs",
+      "name": "run_job_snapshot_guard"
+    },
+    {
+      "table": "inspection_runs",
+      "name": "runs_active_revision_insert"
+    },
+    {
+      "table": "inspection_runs",
+      "name": "runs_employee_identity_guard"
+    },
+    {
+      "table": "jobs",
+      "name": "job_identity_guard"
+    },
+    {
+      "table": "measurements",
+      "name": "measurement_attribution_guard"
+    },
+    {
+      "table": "measurements",
+      "name": "measurement_event_guard"
+    },
+    {
+      "table": "operation_reference_versions",
+      "name": "operation_reference_versions_immutable"
+    },
+    {
+      "table": "operation_sketches",
+      "name": "released_definition_guard"
+    },
+    {
+      "table": "operations",
+      "name": "released_definition_guard"
+    },
+    {
+      "table": "part_revisions",
+      "name": "released_definition_guard"
+    },
+    {
+      "table": "reference_assets",
+      "name": "reference_assets_immutable"
+    }
+  ],
+  "queryPlans": {
+    "exact_job_sheet_page": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 8.3,
+          "Total Cost": 8.35,
+          "Plan Rows": 2,
+          "Plan Width": 54,
+          "Actual Startup Time": 0.047,
+          "Actual Total Time": 0.047,
+          "Actual Rows": 1,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 10,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Incremental Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 8.3,
+              "Total Cost": 8.35,
+              "Plan Rows": 2,
+              "Plan Width": 54,
+              "Actual Startup Time": 0.046,
+              "Actual Total Time": 0.046,
+              "Actual Rows": 1,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "created_at DESC",
+                "id DESC"
+              ],
+              "Presorted Key": [
+                "created_at"
+              ],
+              "Full-sort Groups": {
+                "Group Count": 1,
+                "Sort Methods Used": [
+                  "quicksort"
+                ],
+                "Sort Space Memory": {
+                  "Average Sort Space Used": 25,
+                  "Peak Sort Space Used": 25
+                }
+              },
+              "Shared Hit Blocks": 10,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Backward",
+                  "Index Name": "ix_runs_job_created",
+                  "Relation Name": "inspection_runs",
+                  "Alias": "inspection_runs",
+                  "Startup Cost": 0.27,
+                  "Total Cost": 8.29,
+                  "Plan Rows": 1,
+                  "Plan Width": 54,
+                  "Actual Startup Time": 0.008,
+                  "Actual Total Time": 0.009,
+                  "Actual Rows": 1,
+                  "Actual Loops": 1,
+                  "Index Cond": "((job_id)::text = '<synthetic-id>'::text)",
+                  "Rows Removed by Index Recheck": 0,
+                  "Shared Hit Blocks": 4,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 5,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.076,
+        "Triggers": [],
+        "Execution Time": 0.064
+      }
+    ],
+    "run_event_history": [
+      {
+        "Plan": {
+          "Node Type": "Sort",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 28.27,
+          "Total Cost": 28.29,
+          "Plan Rows": 8,
+          "Plan Width": 29,
+          "Actual Startup Time": 0.046,
+          "Actual Total Time": 0.046,
+          "Actual Rows": 8,
+          "Actual Loops": 1,
+          "Sort Key": [
+            "sequence"
+          ],
+          "Sort Method": "quicksort",
+          "Sort Space Used": 25,
+          "Sort Space Type": "Memory",
+          "Shared Hit Blocks": 12,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Bitmap Heap Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Relation Name": "measurements",
+              "Alias": "measurements",
+              "Startup Cost": 4.34,
+              "Total Cost": 28.15,
+              "Plan Rows": 8,
+              "Plan Width": 29,
+              "Actual Startup Time": 0.017,
+              "Actual Total Time": 0.023,
+              "Actual Rows": 8,
+              "Actual Loops": 1,
+              "Recheck Cond": "((run_id)::text = '<synthetic-id>'::text)",
+              "Rows Removed by Index Recheck": 0,
+              "Exact Heap Blocks": 7,
+              "Lossy Heap Blocks": 0,
+              "Shared Hit Blocks": 9,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Bitmap Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Index Name": "ix_measurements_run_feature_time",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 4.34,
+                  "Plan Rows": 8,
+                  "Plan Width": 0,
+                  "Actual Startup Time": 0.012,
+                  "Actual Total Time": 0.012,
+                  "Actual Rows": 8,
+                  "Actual Loops": 1,
+                  "Index Cond": "((run_id)::text = '<synthetic-id>'::text)",
+                  "Shared Hit Blocks": 2,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 3,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.06,
+        "Triggers": [],
+        "Execution Time": 0.07
+      }
+    ]
+  },
+  "limits": [
+    "Present-state invariant checks complement constraints and adversarial tests; they do not prove untested programs correct.",
+    "Plans below cover representative indexed access paths, not the full API summary aggregate or end-to-end latency.",
+    "Legacy shifts remain NULL when no contemporaneous shift was recorded; no historical attribution is invented."
+  ]
+}

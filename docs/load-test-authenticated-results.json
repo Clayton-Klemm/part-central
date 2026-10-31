@@ -1,0 +1,159 @@
+{
+  "startedAt": "2026-10-26T18:09:45.515171+00:00",
+  "target": "http://127.0.0.1:8080",
+  "scenario": "Authenticated synchronized burst: catalog + part + start job sheet + all nominal readings with expectedSequence + guarded completion + job summary search + archive read",
+  "users": 100,
+  "iterationsPerUser": 1,
+  "part": "DG-1042",
+  "characteristicsPerSheet": 8,
+  "expectedCompletedSheets": 100,
+  "completedSheets": 100,
+  "jobPrefix": "LOAD-20261026T180945-C71BBB",
+  "elapsedSeconds": 2.087,
+  "requestsPerSecond": 670.92,
+  "authentication": {
+    "mode": "local employee session cookie",
+    "employeeRange": "1000\u20131099",
+    "loginRequests": 101,
+    "loginOutsideMeasuredPhase": true,
+    "serverIdentityVerified": true
+  },
+  "clientHost": {
+    "system": "Windows",
+    "release": "11",
+    "python": "3.14.0",
+    "logicalCpus": 32
+  },
+  "limitations": [
+    "Clients and Docker may share one host; network, browser rendering, CAD files, and production hardware are not simulated.",
+    "This is a bounded synchronized request burst, not an endurance test, capacity guarantee, or service-level agreement.",
+    "Uses the current synthetic catalog and retained database size; repeat with representative data and assets before deployment.",
+    "Request timings include client-observed queueing, server employee-session checks, and network time. Client creation, readiness checks, and employee sign-in are excluded."
+  ],
+  "overall": {
+    "requests": 1400,
+    "errors": 0,
+    "statuses": {
+      "200": 500,
+      "201": 900
+    },
+    "p50_ms": 128.17,
+    "p95_ms": 275.59,
+    "p99_ms": 330.81,
+    "max_ms": 444.51
+  },
+  "endpoints": {
+    "GET archived sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 53.05,
+      "p95_ms": 108.94,
+      "p99_ms": 119.99,
+      "max_ms": 125.42
+    },
+    "GET catalog": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 112.44,
+      "p95_ms": 183.84,
+      "p99_ms": 238.33,
+      "max_ms": 256.43
+    },
+    "GET job history summaries": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 121.68,
+      "p95_ms": 156.09,
+      "p99_ms": 165.92,
+      "max_ms": 200.65
+    },
+    "GET part requirements": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 168.66,
+      "p95_ms": 227.95,
+      "p99_ms": 293.53,
+      "max_ms": 330.8
+    },
+    "POST complete sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "200": 100
+      },
+      "p50_ms": 112.1,
+      "p95_ms": 143.67,
+      "p99_ms": 165.22,
+      "max_ms": 180.1
+    },
+    "POST measurement": {
+      "requests": 800,
+      "errors": 0,
+      "statuses": {
+        "201": 800
+      },
+      "p50_ms": 129.34,
+      "p95_ms": 184.94,
+      "p99_ms": 233.34,
+      "max_ms": 284.58
+    },
+    "POST start sheet": {
+      "requests": 100,
+      "errors": 0,
+      "statuses": {
+        "201": 100
+      },
+      "p50_ms": 291.08,
+      "p95_ms": 338.93,
+      "p99_ms": 432.37,
+      "max_ms": 444.51
+    }
+  },
+  "failures": [],
+  "workstationFailures": [],
+  "serverHost": {
+    "engine": "Docker Desktop",
+    "engineVersion": "29.8.2",
+    "architecture": "x86_64",
+    "logicalCpus": 32,
+    "memoryBytes": 20967440384,
+    "maxDatabaseConnections": 100
+  },
+  "configuration": {
+    "API_WORKERS": 4,
+    "DB_POOL_SIZE": 5,
+    "DB_MAX_OVERFLOW": 5,
+    "DB_POOL_TIMEOUT": 10,
+    "maxApiDatabaseConnections": 40
+  },
+  "datasetBefore": {
+    "parts": 13,
+    "part_revisions": 18,
+    "jobs": 310,
+    "inspection_runs": 312,
+    "measurements": 2443,
+    "employees": 5,
+    "employee_sessions": 3
+  },
+  "datasetAfter": {
+    "parts": 13,
+    "part_revisions": 18,
+    "jobs": 410,
+    "inspection_runs": 412,
+    "measurements": 3243,
+    "employees": 106,
+    "employee_sessions": 104
+  }
+}

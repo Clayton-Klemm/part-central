@@ -1,0 +1,52 @@
+.......................................................F................ [ 49%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+=================================== FAILURES ===================================
+_________ test_shared_run_list_is_newest_first_bounded_and_filterable __________
+
+client = <starlette.testclient.TestClient object at 0x772495267df0>
+
+    def test_shared_run_list_is_newest_first_bounded_and_filterable(client):
+        assert client.get("/api/runs").json() == []
+        first = start(client, sampleNumber="01")
+        event = measure(client, first, "12.5").json()
+        other = client.get("/api/parts/DG-2080").json()
+        second = start(client, partRevisionId=other["revision"]["id"], operationId=other["operation"]["id"], sampleNumber="A1")
+        third = start(client, sampleNumber="03")
+        response = client.get("/api/runs")
+        assert response.status_code == 200
+        runs = response.json()
+>       assert [run["id"] for run in runs] == [third["id"], second["id"], first["id"]]
+E       AssertionError: assert ['a8b28550-94...acc7280d8f10'] == ['b2377921-37...6cebdcf7916d']
+E         
+E         At index 0 diff: 'a8b28550-94bb-4266-bd88-0ac06f5e7bdf' != 'b2377921-379d-4ac7-b84d-acc7280d8f10'
+E         Use -v to get more diff
+
+tests/test_inspection.py:156: AssertionError
+---------------------------- Captured stderr setup -----------------------------
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> e99369553572, Initial revision-bound inspection schema
+INFO  [alembic.runtime.migration] Running upgrade e99369553572 -> 20261026_integrity, Freeze released definitions and enforce append-only measurements.
+INFO  [alembic.runtime.migration] Running upgrade 20261026_integrity -> 20261026_sample_id, Preserve sample labels, including leading zeros and alphanumeric IDs.
+INFO  [alembic.runtime.migration] Running upgrade 20261026_sample_id -> 0003_jobs_optional, Jobs, optional visual references, and pinned documentation snapshots.
+INFO  [alembic.runtime.migration] Running upgrade 0003_jobs_optional -> 0004_reference_versions, Add immutable, independently versioned operation visual references.
+INFO  [alembic.runtime.migration] Running upgrade 0004_reference_versions -> 0005_employee_sessions, Local employee sessions and server-stamped inspection identity.
+INFO  [alembic.runtime.migration] Running upgrade 0005_employee_sessions -> 0006_catalog_lifecycle, Controlled draft revisions, one active engineering definition, and one-sided limits.
+INFO  [alembic.runtime.migration] Running upgrade 0006_catalog_lifecycle -> 0007_geometric_magnitudes, Treat negative geometric magnitudes as failed readings, retaining signed coordinates.
+INFO  [alembic.runtime.migration] Running upgrade 0007_geometric_magnitudes -> 0008_shift_attribution, Attribute new inspection events and completion to employee and shift.
+INFO  [alembic.runtime.migration] Running upgrade 0008_shift_attribution -> 0009_native_sketch_scope, Validate native operation sketches by ownership, never identifier prefixes.
+INFO  [alembic.runtime.migration] Running upgrade 0009_native_sketch_scope -> 0010_weekend_shift, Allow weekend shift 71 without relabeling historical shift 3.
+=============================== warnings summary ===============================
+../../usr/local/lib/python3.13/site-packages/starlette/testclient.py:37
+  /usr/local/lib/python3.13/site-packages/starlette/testclient.py:37: DeprecationWarning: The anyio.abc.BlockingPortal alias is deprecated, use anyio.from_thread.BlockingPortal instead.
+    _PortalFactoryType = typing.Callable[[], typing.ContextManager[anyio.abc.BlockingPortal]]
+
+tests/test_jobs.py::test_job_migration_preserves_completed_legacy_runs_history_and_reference_baseline
+  /usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py:952: DeprecationWarning: The default datetime adapter is deprecated as of Python 3.12; see the sqlite3 documentation for suggested replacement recipes
+    cursor.execute(statement, parameters)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_inspection.py::test_shared_run_list_is_newest_first_bounded_and_filterable
+1 failed, 144 passed, 2 warnings in 172.62s (0:02:52)
