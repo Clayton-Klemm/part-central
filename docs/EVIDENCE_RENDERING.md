@@ -1,7 +1,8 @@
 # Reproduce the database evidence
 
 All rendering and load generation run locally. The application has no Manim
-runtime dependency; only the finished compact GIFs are embedded in README.
+runtime dependency; the finished compact GIFs appear in the supporting
+[design rationale](DATABASE_PROOF.md) and [performance evidence](PERFORMANCE.md).
 
 ## Run the correctness and workload gate
 
@@ -78,7 +79,7 @@ JSON used to render it.
 
 `LatencyReport` reads endpoint p95 and scenario counts directly from the
 successful report. It refuses to render an unsuccessful run. Update the
-README's plain-text table alongside new results for accessible review.
+performance documentation's plain-text table alongside new results for accessible review.
 `NormalizationProof` labels its storage arithmetic as an illustration,
 with explicit byte assumptions; it does not present that example as a disk
 benchmark. The exact algebra and lossless-join checks can run without Manim:

@@ -226,8 +226,8 @@ budget, not a claim about the eventual production service agreement.
 The `postgres` CI job runs on every push and pull request, with no schema
 path filter that could miss a persistence change. It uploads raw reports.
 The independent backend CI job runs the entire SQLite regression/migration
-suite. Once the user creates a remote repository, configure `postgres` as a
-required branch-protection check; no remote settings were changed locally.
+suite. The GitHub repository requires `postgres` as a branch-protection check
+on `main`; GitHub's default administrator override remains available.
 
 When a design changes, update its dependencies/invariants, add preservation
 and failure cases, rerun the gate, compare raw plans and timings against an

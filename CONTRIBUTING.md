@@ -15,7 +15,7 @@ npm test
 npm run build
 ```
 
-The default browser demo works without a database. The [README](README.md)
+The default browser demo works without a database. The [setup guide](docs/SETUP.md)
 describes the separate Docker shared-server setup and its pilot limitations.
 
 ## Repository hygiene
@@ -44,8 +44,10 @@ Never reset an operator's data to make a check pass. Preserve released
 definitions, reference snapshots, append-only readings, completed sheets, and
 unknown historical authors or shifts.
 
-Keep measured benchmarks separate from proofs of declared relationships. Update
-the README and regenerate its evidence GIFs when displayed measurements change.
+Keep measured benchmarks separate from proofs of declared relationships. Keep
+the [design rationale](docs/DATABASE_PROOF.md) and [performance evidence](docs/PERFORMANCE.md)
+accurate, and regenerate their evidence GIFs when displayed measurements change.
+The README should remain a concise introduction that links to these details.
 
 ## Publishing the demonstration
 

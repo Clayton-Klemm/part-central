@@ -13,9 +13,11 @@ of its checks individually) against an idle local test stack and retain raw
 reports. Explain meaningful regressions;
 never relax a check merely to make a change pass.
 
-Keep the README's mathematical assumptions, normalization exceptions, database
-invariants, and measured latency evidence accurate. Regenerate its Manim GIFs
-when the displayed evidence changes. A proof of declared relationships and a
+Keep the supporting documentation's mathematical assumptions, normalization
+exceptions, database invariants, and measured latency evidence accurate.
+Keep the README concise and visual; link to those details instead of displaying
+the full analysis. Regenerate the evidence Manim GIFs when their displayed
+evidence changes. A proof of declared relationships and a
 workload benchmark are different kinds of evidence; neither establishes that a
 schema is universally optimal.
 
